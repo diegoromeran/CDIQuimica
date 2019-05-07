@@ -20,7 +20,7 @@ MonoBehaviour:
     maxSimultaneousImageTargets: 10
     maxSimultaneousObjectTargets: 10
     useDelayedLoadingObjectTargets: 0
-    version: 8.1.10
+    version: 8.1.7
     eulaAcceptedVersions: '{"Values":["8.1"]}'
   digitalEyewear:
     cameraOffset: 0.06
