@@ -15,7 +15,7 @@ public class show3dText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.I)) {
+        if(Input.GetKeyDown(KeyCode.I)) {
             text.SetActive(!text.activeInHierarchy);
         }
     }
