@@ -73,6 +73,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             // For combo of previousStatus=UNKNOWN + newStatus=UNKNOWN|NOT_FOUND
             // Vuforia is starting, but tracking has not been lost or found yet
             // Call OnTrackingLost() to hide the augmentations
+            mTrackableBehaviour.transform.position = new Vector3(-1000, -1000, -1000);
             OnTrackingLost();
         }
     }
