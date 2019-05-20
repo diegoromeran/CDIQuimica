@@ -68,18 +68,18 @@ public class aparicionMoleculas : MonoBehaviour
         }
         
         //Monoxido
-        if(Vector3.Distance(carbono.transform.position, oxigeno.transform.position) < 10) {
-            oxigeno.SetActive(false);
-            carbono.SetActive(false);
+        if(Vector3.Distance(carbono.transform.parent.transform.position, oxigeno.transform.parent.transform.position) < 10) {
+            oxigeno.transform.position = new Vector3(-1000, -1000, -1000);
+            carbono.transform.position = new Vector3(-1000, -1000, -1000);
             monoxido.SetActive(true);
-            monoxido.transform.position = (oxigeno.transform.position + carbono.transform.position)/2;
+            monoxido.transform.position = (oxigeno.transform.parent.transform.position + carbono.transform.parent.transform.position)/2;
         }
-        if(Vector3.Distance(carbono.transform.position, oxigeno.transform.position) > 15) {
-            oxigeno.SetActive(true);
-            carbono.SetActive(true);
+        if(Vector3.Distance(carbono.transform.parent.transform.position, oxigeno.transform.parent.transform.position) > 15) {
+            oxigeno.transform.position = oxigeno.transform.parent.transform.position;
+            carbono.transform.position = carbono.transform.parent.transform.position;
             monoxido.SetActive(false);
-            monoxido.transform.position = (oxigeno.transform.position + carbono.transform.position)/2;
         }
+        
 
         //Metano
         if(Vector3.Distance(carbono.transform.position, hidrogeno.transform.position) < 10) {
