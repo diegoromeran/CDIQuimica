@@ -5,11 +5,14 @@ using UnityEngine;
 public class show3dText : MonoBehaviour
 {
     GameObject text;
+    GameObject textMolecula;
     // Start is called before the first frame update
     void Start()
     {
         text = GameObject.FindWithTag("texto3d");
+        textMolecula= GameObject.FindWithTag("texto3dmolecula");
         text.SetActive(!text.activeInHierarchy);
+        textMolecula.SetActive(!textMolecula.activeInHierarchy);
     }
 
     // Update is called once per frame
@@ -17,6 +20,7 @@ public class show3dText : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.I)) {
             text.SetActive(!text.activeInHierarchy);
+            textMolecula.SetActive(!textMolecula.activeInHierarchy);
         }
     }
 }

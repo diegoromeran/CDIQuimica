@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - texto3d
+  - texto3dmolecula
   layers:
   - Default
   - TransparentFX
