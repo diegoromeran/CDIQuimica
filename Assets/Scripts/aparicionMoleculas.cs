@@ -45,7 +45,7 @@ public class aparicionMoleculas : MonoBehaviour
 
         //Sal
         sodio = GameObject.Find("nucleoNa");
-        cloro = GameObject.Find("Cloro");
+        cloro = GameObject.Find("nucleoCl");
         sal = GameObject.Find("Sal");
         sal.SetActive(false);
         sal.SetActive(!sal.activeInHierarchy);
@@ -55,7 +55,7 @@ public class aparicionMoleculas : MonoBehaviour
     void Update()
     {
 //Agua
-        if(Vector3.Distance(hidrogeno.transform.parent.transform.position, oxigeno.transform.parent.transform.position) < 10) {
+       if(Vector3.Distance(hidrogeno.transform.parent.transform.position, oxigeno.transform.parent.transform.position) < 10) {
             oxigeno.transform.position = new Vector3(-1000, -1000, -1000);
             hidrogeno.transform.position = new Vector3(-1000, -1000, -1000);
             agua.SetActive(true);
@@ -66,6 +66,7 @@ public class aparicionMoleculas : MonoBehaviour
             hidrogeno.transform.position = hidrogeno.transform.parent.transform.position;
             agua.SetActive(false);
         }
+        
         //Monoxido
         if(Vector3.Distance(carbono.transform.position, oxigeno.transform.position) < 10) {
             oxigeno.SetActive(false);
@@ -109,17 +110,16 @@ public class aparicionMoleculas : MonoBehaviour
         }
 
         //Sal
-        if(Vector3.Distance(sodio.transform.position, cloro.transform.position) < 10) {
-            sodio.SetActive(false);
-            cloro.SetActive(false);
+        if(Vector3.Distance(sodio.transform.parent.transform.position, cloro.transform.parent.transform.position) < 10) {
+            sodio.transform.position = new Vector3(-1000, -1000, -1000);
+            cloro.transform.position = new Vector3(-1000, -1000, -1000);
             sal.SetActive(true);
-            sal.transform.position = (sodio.transform.position + cloro.transform.position)/2;
+            sal.transform.position = (sodio.transform.parent.transform.position + cloro.transform.parent.transform.position)/2;
         }
-        if(Vector3.Distance(sodio.transform.position, cloro.transform.position) > 15) {
-            sodio.SetActive(true);
-            cloro.SetActive(true);
+        if(Vector3.Distance(sodio.transform.parent.transform.position, cloro.transform.parent.transform.position) > 15) {
+            sodio.transform.position = sodio.transform.parent.transform.position;
+            cloro.transform.position = cloro.transform.parent.transform.position;
             sal.SetActive(false);
-            sal.transform.position = (sodio.transform.position + cloro.transform.position)/2;
         }
     }
 }
