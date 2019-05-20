@@ -38,7 +38,7 @@ public class aparicionMoleculas : MonoBehaviour
         metano.SetActive(!metano.activeInHierarchy);
 
         //Amoniaco
-        nitrogeno = GameObject.Find("Nitrogeno");
+        nitrogeno = GameObject.Find("nucleoN");
         amoniaco = GameObject.Find("Amoniaco");
         amoniaco.SetActive(false);
         amoniaco.SetActive(!amoniaco.activeInHierarchy);
@@ -94,19 +94,19 @@ public class aparicionMoleculas : MonoBehaviour
             metano.SetActive(false);
             metano.transform.position = (hidrogeno.transform.position + carbono.transform.position)/2;
         }
+        
 
         //Amoniaco
-        if(Vector3.Distance(hidrogeno.transform.position, nitrogeno.transform.position) < 10) {
-            hidrogeno.SetActive(false);
-            nitrogeno.SetActive(false);
+        if(Vector3.Distance(hidrogeno.transform.parent.transform.position, nitrogeno.transform.parent.transform.position) < 10) {
+            hidrogeno.transform.position = new Vector3(-1000, -1000, -1000);
+            nitrogeno.transform.position = new Vector3(-1000, -1000, -1000);
             amoniaco.SetActive(true);
-            amoniaco.transform.position = (hidrogeno.transform.position + nitrogeno.transform.position)/2;
+            amoniaco.transform.position = (hidrogeno.transform.parent.transform.position + nitrogeno.transform.parent.transform.position)/2;
         }
-        if(Vector3.Distance(hidrogeno.transform.position, nitrogeno.transform.position) > 15) {
-            hidrogeno.SetActive(true);
-            nitrogeno.SetActive(true);
+        if(Vector3.Distance(hidrogeno.transform.parent.transform.position, nitrogeno.transform.parent.transform.position) > 15) {
+            hidrogeno.transform.position = hidrogeno.transform.parent.transform.position;
+            nitrogeno.transform.position = nitrogeno.transform.parent.transform.position;
             amoniaco.SetActive(false);
-            amoniaco.transform.position = (hidrogeno.transform.position + nitrogeno.transform.position)/2;
         }
 
         //Sal
