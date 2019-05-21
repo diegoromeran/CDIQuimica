@@ -19,18 +19,20 @@ public class aparicionMoleculas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Agua
-        hidrogeno = GameObject.Find("nucleoH");
-        oxigeno = GameObject.Find("nucleoO");
-        agua = GameObject.Find("Agua");
-        agua.SetActive(false);
-        agua.SetActive(!agua.activeInHierarchy);
+        
 
         //Monoxido
         carbono = GameObject.Find("nucleoC");
         monoxido = GameObject.Find("Monoxido");
         monoxido.SetActive(false);
         monoxido.SetActive(!monoxido.activeInHierarchy);
+        
+        //Agua
+        hidrogeno = GameObject.Find("nucleoH");
+        oxigeno = GameObject.Find("nucleoO");
+        agua = GameObject.Find("Agua");
+        agua.SetActive(false);
+        agua.SetActive(!agua.activeInHierarchy);
 
         //Metano
         metano = GameObject.Find("Metano");
@@ -54,19 +56,7 @@ public class aparicionMoleculas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-//Agua
-       if(Vector3.Distance(hidrogeno.transform.parent.transform.position, oxigeno.transform.parent.transform.position) < 10) {
-            oxigeno.transform.position = new Vector3(-1000, -1000, -1000);
-            hidrogeno.transform.position = new Vector3(-1000, -1000, -1000);
-            agua.SetActive(true);
-            agua.transform.position = (oxigeno.transform.parent.transform.position + hidrogeno.transform.parent.transform.position)/2;
-        }
-        if(Vector3.Distance(hidrogeno.transform.parent.transform.position, oxigeno.transform.parent.transform.position) > 15) {
-            oxigeno.transform.position = oxigeno.transform.parent.transform.position;
-            hidrogeno.transform.position = hidrogeno.transform.parent.transform.position;
-            agua.SetActive(false);
-        }
-        
+       
         //Monoxido
         if(Vector3.Distance(carbono.transform.parent.transform.position, oxigeno.transform.parent.transform.position) < 10) {
             oxigeno.transform.position = new Vector3(-1000, -1000, -1000);
@@ -79,7 +69,19 @@ public class aparicionMoleculas : MonoBehaviour
             carbono.transform.position = carbono.transform.parent.transform.position;
             monoxido.SetActive(false);
         }
-        
+
+         //Agua
+       if(Vector3.Distance(hidrogeno.transform.parent.transform.position, oxigeno.transform.parent.transform.position) < 10) {
+            oxigeno.transform.position = new Vector3(-1000, -1000, -1000);
+            hidrogeno.transform.position = new Vector3(-1000, -1000, -1000);
+            agua.SetActive(true);
+            agua.transform.position = (oxigeno.transform.parent.transform.position + hidrogeno.transform.parent.transform.position)/2;
+        }
+        if(Vector3.Distance(hidrogeno.transform.parent.transform.position, oxigeno.transform.parent.transform.position) > 15) {
+            oxigeno.transform.position = oxigeno.transform.parent.transform.position;
+            hidrogeno.transform.position = hidrogeno.transform.parent.transform.position;
+            agua.SetActive(false);
+        }
 
         //Metano
         if(Vector3.Distance(carbono.transform.position, hidrogeno.transform.position) < 10) {
